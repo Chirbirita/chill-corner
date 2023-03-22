@@ -31,6 +31,17 @@ const Navbar = () => {
   );
 };
 
+const TextBox = () => {
+    return (
+        <div className="card text-white text-center" style={{width: `18rem`, margin: `50px auto 0`}}>
+            <div className ="card-body">
+                <h1 className = "card-title" style={{ fontSize: "2rem", color: "white", fontFamily: 'Inter, sans-serif', fontStyle: 'italic' }}>A CHILL CORNER</h1>
+            <p className="card-text" style={{fontFamily: 'Inter, sans-serif'}}>Your space for work</p>
+        </div>
+        </div>
+    );
+};
+
 const MainBody = () => {
   return (
     <>
@@ -43,6 +54,7 @@ const MainBody = () => {
         }}
       >
         <Navbar />
+        <TextBox />
       </div>
     </>
   );
