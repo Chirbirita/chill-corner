@@ -1,11 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import WrapperContainer from './components/WrapperContainer'
 
-function App() {
-  const [count, setCount] = useState(0)
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    },
+  },
+});
 
-  return (<>
-    <h1>Hello World</h1>
-  </>)
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <WrapperContainer />
+    </QueryClientProvider>
+  )
+
 }
-
-export default App
