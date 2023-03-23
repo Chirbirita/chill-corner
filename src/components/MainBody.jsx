@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPlay, FaPause } from 'react-icons/fa';
+import { FaPlay, FaPause, FaStepForward, FaStepBackward } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
@@ -65,13 +65,26 @@ const MusicPlayer = () => {
     setPlaying(!playing);
   };
 
+  const handlePrevious = () => {
+    // TODO: logic for going to the previous song
+  };
+
+  const handleNext = () => {
+    // TODO: logic for going to the next song
+  };
+
+
   return (
     <div className="mt-8 flex items-center justify-center">
+        <div className="flex gap-6">
+        <FaStepBackward size={50} color="#FFF" onClick={handlePrevious} style={{marginTop: 5, marginBottom: 5}}/>
       {playing ? (
         <FaPause size={70} color="#FFF" onClick={handleClick} />
       ) : (
         <FaPlay size={70} color="#FFF" onClick={handleClick} />
       )}
+      <FaStepForward size={50} color="#FFF" onClick={handleNext} style={{marginTop: 5, marginBottom: 5}}/>
+    </div>
     </div>
   );
 };
