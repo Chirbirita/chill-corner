@@ -1,5 +1,5 @@
 import React from 'react'
-import api from './api'
+import Api from './Api'
 
 const IndexPage = () => {
     // Create state variables
@@ -9,7 +9,7 @@ const IndexPage = () => {
     const fetchData = (e) => {
         e.preventDefault()
 
-        api.getData()
+        Api.getData()
         .then((response)=>{
             setResponseData(response.data)
             console.log("Success")
