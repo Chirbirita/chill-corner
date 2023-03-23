@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaPlay, FaPause } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
@@ -32,14 +33,47 @@ const Navbar = () => {
 };
 
 const TextBox = () => {
-    return (
-        <div className="card text-white text-center" style={{width: `18rem`, margin: `50px auto 0`}}>
-            <div className ="card-body">
-                <h1 className = "card-title" style={{ fontSize: "2rem", color: "white", fontFamily: 'Inter, sans-serif', fontStyle: 'italic' }}>A CHILL CORNER</h1>
-            <p className="card-text" style={{fontFamily: 'Inter, sans-serif'}}>Your space for work</p>
-        </div>
-        </div>
-    );
+  return (
+    <div
+      className="card text-center text-white"
+      style={{ width: `18rem`, margin: `50px auto 0` }}
+    >
+      <div className="card-body">
+        <h1
+          className="card-title"
+          style={{
+            fontSize: '2rem',
+            color: 'white',
+            fontFamily: 'Inter, sans-serif',
+            fontStyle: 'italic',
+          }}
+        >
+          A CHILL CORNER
+        </h1>
+        <p className="card-text" style={{ fontFamily: 'Inter, sans-serif' }}>
+          Your space for work
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const MusicPlayer = () => {
+  const [playing, setPlaying] = useState(false);
+
+  const handleClick = () => {
+    setPlaying(!playing);
+  };
+
+  return (
+    <div className="mt-8 flex items-center justify-center">
+      {playing ? (
+        <FaPause size={70} color="#FFF" onClick={handleClick} />
+      ) : (
+        <FaPlay size={70} color="#FFF" onClick={handleClick} />
+      )}
+    </div>
+  );
 };
 
 const MainBody = () => {
@@ -55,6 +89,7 @@ const MainBody = () => {
       >
         <Navbar />
         <TextBox />
+        <MusicPlayer />
       </div>
     </>
   );
