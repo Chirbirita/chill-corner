@@ -1,64 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaPlay, FaPause, FaStepForward, FaStepBackward } from 'react-icons/fa';
-
-// NavBar
-const Navbar = () => {
-  return (
-    <nav
-      className="navbar navbar-light p-4"
-      style={{
-        backgroundColor: 'rgba(161,184,155,0.75)',
-        borderRadius: '8px',
-        display: 'flex',
-        alignItems: 'center',
-      }}
-    >
-      <a href="/" className="ml-4 font-bold text-white">
-        Home
-      </a>
-      <div
-        style={{ display: 'flex', alignItems: 'center', marginLeft: '23em' }}
-      >
-        <a href="/about" className="ml-12 text-white">
-          About
-        </a>
-        <a href="/contact" className="ml-4 text-white">
-          Contact
-        </a>
-        <a href="/placeholder" className="ml-4 text-white">
-          Placeholder
-        </a>
-      </div>
-    </nav>
-  );
-};
-
-// Our App name; this can be moved to side bar later if needed
-const TextBox = () => {
-  return (
-    <div
-      className="card text-center text-white"
-      style={{ width: `18rem`, margin: `50px auto 0` }}
-    >
-      <div className="card-body">
-        <h1
-          className="card-title"
-          style={{
-            fontSize: '2rem',
-            color: 'white',
-            fontFamily: 'Inter, sans-serif',
-            fontStyle: 'italic',
-          }}
-        >
-          A CHILL CORNER
-        </h1>
-        <p className="card-text" style={{ fontFamily: 'Inter, sans-serif' }}>
-          Your space for work
-        </p>
-      </div>
-    </div>
-  );
-};
+import { useContext } from 'react'
+import BGContext from './BGContext'
+import SecondsContext from './SecondsContext';
 
 // Music player but no particular logic yet
 const MusicPlayer = () => {
@@ -104,26 +48,14 @@ const MusicPlayer = () => {
 // Timer countdown
 // time will be our prop input but I have no idea if this code works as it's a mix of solutions found in google
 const Timer = ({ time }) => {
-  const [remainingTime, setRemainingTime] = useState(time);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setRemainingTime((prevTime) => prevTime - 1);
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
-  const minutes = Math.floor(remainingTime / 60);
-  const seconds = remainingTime % 60;
+  const [seconds, _] = useContext(SecondsContext);
 
   return (
     <div
       className=" mx-auto mt-7 rounded-md bg-[rgb(187,220,163,0.6)] p-10 text-center"
       style={{ width: '50%', fontSize: '2.3rem' }}
     >
-      {minutes.toString().padStart(2, '0')}:
-      {seconds.toString().padStart(2, '0')}
+      {seconds}
     </div>
   );
 };
@@ -166,18 +98,15 @@ function NoteForm(props) {
 }
 
 const MainBody = () => {
+  const [background, _] = useContext(BGContext)
+  const choosenBg = background === null ? 'bg-whtie' : background
   return (
     <>
       <div
-        className="glass my-auto h-5/6 w-full rounded-lg"
-        style={{
-          backgroundImage: `url(./images/chill-out_copy.jpeg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+        style={{ backgroundImage: `url(${choosenBg})` }}
+        className="glass my-auto h-5/6 w-full rounded-lg bg-center bg-cover"
       >
-        <Navbar />
-        <TextBox />
+        {/* <Navbar /> */}
         <MusicPlayer />
         <Timer />
         <NoteForm />

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import WrapperContainer from './components/WrapperContainer'
+import BGContext from './components/BGContext'
+import SecondsContext from './components/SecondsContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -12,9 +14,18 @@ const queryClient = new QueryClient({
 });
 
 export default function App() {
+  const background = useState('src/assets/images/random.jpg')
+  const seconds = useState()
   return (
     <QueryClientProvider client={queryClient}>
-      <WrapperContainer />
+      <BGContext.Provider value={background}>
+        <SecondsContext.Provider value={seconds}>
+          <div className='w-full'>
+            <WrapperContainer />
+
+          </div>
+        </SecondsContext.Provider>
+      </BGContext.Provider>
     </QueryClientProvider>
   )
 
