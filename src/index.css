@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+:root{
+  --mainColor: #fff;
+  --mainLightColor: rgba(235,235,235,0.5);
+  --mainDimColor: rgb(228,228,228);
+}
 
 html {
   background-color: #ffffff;
@@ -12,5 +21,76 @@ html {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);  
+  
 }
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mainColor);
+  font-family: 'Poppins'; 
+
+}
+
+.blackScreen{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  background-color: rgba(17,17,17,0.2);
+}
+.music-Container{
+  width: 350px;
+  padding: 35px 40px;
+  margin-right: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 36px;
+  box-shadow: 0 0 20px rgba(26,26,26,0.1),
+  0 0 40px rgba(26,26,26,0.1),
+  0 0 80px rgba(26,26,26,0.1);
+  backdrop-filter: blur(15px);
+  font-weight: 600;
+}
+
+.musicPlayer{
+  margin: 0;
+  margin-bottom: 10px;
+  color: var(--mainLightColor);
+}
+
+.music-Head-Name{
+  margin: 0 auto;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.music-Artist-Name{
+  color: var(--mainDimColor);
+  margin: 4px 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.musicTimerDiv{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: 600;
+}
+
+.musicControler{
+  cursor: pointer;
+  font-size: 28px;
+  color: var(--mainColor);
+}
+
+
+
+
+
