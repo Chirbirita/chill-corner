@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import { useStateProvider } from "../utils/StateProvider";
 import axios from "axios";
 import { reducerCases } from '../utils/Constants';
+import Body from './Body';
 
 
 
@@ -47,6 +48,7 @@ const MainBody = () => {
         className="glass my-auto h-5/6 w-full rounded-lg bg-center bg-cover"
       >
         <Navbar/>
+        <Body/>
         
 
       </div>
