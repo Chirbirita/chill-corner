@@ -1,15 +1,16 @@
 import SideBar from './SideBar'
 import MainBody from './MainBody'
 
-const WrapperContainer = () => {
-    return (
-        <div className='container flex mx-auto h-screen max-w-[70rem] relative bg-[#FFFFFF] rounded-lg px-6 gap-5'>
-            <header className='h-[60px]'>
 
-            </header>
+
+const WrapperContainer = () => {
+
+
+    return (
+        <div className={`container w-screen max-w-[1224px] flex mx-auto h-screen  bg-no-repeat rounded-lg gap-5`} >
             <SideBar />
             <MainBody />
-        </div>
+        </div >
     )
 }
 
