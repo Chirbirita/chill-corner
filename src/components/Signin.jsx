@@ -24,7 +24,7 @@ const Signin = () => {
   return (
     <>
       <div>
-      {token ? <WrapperContainer /> : <Login />}
+      {token ? <WrapperContainer token={token}/> : <Login />}
 
       </div>
     </>

@@ -3,7 +3,7 @@ import MainBody from './MainBody'
 
 
 
-const WrapperContainer = () => {
+const WrapperContainer = ({token}) => {
 
 
     return (

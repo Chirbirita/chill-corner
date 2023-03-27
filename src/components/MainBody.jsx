@@ -8,8 +8,7 @@ import axios from "axios";
 import { reducerCases } from '../utils/Constants';
 import Body from './Body';
 import Footer from './Footer';
-
-
+import Dashboard from './Dashboard';
 
  
 
@@ -60,9 +59,10 @@ const MainBody = () => {
         className="glass my-auto h-5/6 w-full rounded-lg bg-center bg-cover"
       >
         <Container>
-          
             <div className="body" ref={bodyRef} onScroll={bodyScrolled}>
               <Navbar navBackground={navBackground} />
+              {/* <Dashboard code={token} /> */}
+              
               <div className="body__contents">
                 <Body headerBackground={headerBackground} />
               </div>
