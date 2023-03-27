@@ -25,6 +25,7 @@ export default function PlayerControls() {
         },
       }
     );
+    console.log(token);
     dispatch({
       type: reducerCases.SET_PLAYER_STATE,
       playerState: !playerState,

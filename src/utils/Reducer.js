@@ -8,7 +8,7 @@ export const initialState = {
   currentPlaying: null,
   playerState: false,
   selectedPlaylist: null,
-  selectedPlaylistId:"37i9dQZF1DX1OY2Lp0bIPp",
+  selectedPlaylistId:"37i9dQZF1DX1IeqVkK7Ebc",
   
 };
 

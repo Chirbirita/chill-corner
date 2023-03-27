@@ -22,6 +22,7 @@ export default function Body({headerBackground}) {
             }
           }
         )
+        
         const selectedPlaylist = {
           id: response.data.id,
           name: response.data.name,
@@ -41,6 +42,7 @@ export default function Body({headerBackground}) {
           })),
         
         };
+        
         dispatch({ type: reducerCases.SET_PLAYLIST, selectedPlaylist });
       }
       getInitialPlaylist();
