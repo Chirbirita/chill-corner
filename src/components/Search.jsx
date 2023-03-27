@@ -1,6 +1,7 @@
 import React from "react";
 import { MdHomeFilled, MdSearch } from "react-icons/md";
 import styled from "styled-components";
+import Playlists from "./Playlists";
 
 export default function Search() {
     return(
@@ -18,6 +19,7 @@ export default function Search() {
                 </ul>
             
             </div>
+            <Playlists/>
         </Container>
        
 
