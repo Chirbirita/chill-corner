@@ -74,8 +74,39 @@ const spotifyApi = new SpotifyWebApi({
 
     return () => (cancel = true)
   }, [search, accessToken])
+
+  return(
+    <Container >
+      <Form.Control
+        type="search"
+        placeholder="Search song to play"
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+      />
+       <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
+        {searchResults.map(track => (
+          <TrackSearchResult
+            track={track}
+            key={track.uri}
+            chooseTrack={chooseTrack}
+          />
+          ))}
+
+          {/* {searchResults.length === 0 && (
+          <div className="text-center" style={{ whiteSpace: "pre" }}>
+            {lyrics}
+          </div>
+        )} */}
   
 
+  </div>
+      <div>
+        <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+      </div>
+
+     
+    </Container>
+  )
 }
 
  
