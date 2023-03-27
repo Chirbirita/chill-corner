@@ -3,6 +3,9 @@ import SelectTheme from './SelectTheme';
 import { useContext } from 'react'
 import BGContext from './BGContext'
 import { TimerSection } from './TimerSection';
+import chillCorner from '../assets/images/chill-corner.png'
+import Search from './Search';
+
 
 
 function SideBar() {
@@ -63,9 +66,14 @@ function SideBar() {
       className="relative glass my-auto h-5/6 w-2/6 rounded-lg pt-5 flex flex-col justify-center bg-cover px-3 min-w-[300px]"
     >
       <div className='absolute top-5 little-glass p-1 rounded-lg hover:transition-all hover:ease-in-out hover:duration-300'>
-        <h3 className='text-3xl font-semibold px-2'>Chill Corner</h3>
+        <img
+        src={chillCorner}
+        alt='ChillCorner'
+        height='20%'
+        />
       </div>
       <div className='h-[400px] flex flex-col justify-between'>
+        <Search/>
         <SelectTheme />
         <TimerSection />
       </div>

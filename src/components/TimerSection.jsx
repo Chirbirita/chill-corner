@@ -79,7 +79,7 @@ export const TimerSection = () => {
 
     return (
         <div>
-            <form onSubmit={submitTimer} className="relative flex flex-col p-2 bg-[#ffffff59] w-full rounded-md items-center">
+            <form onSubmit={submitTimer} className="relative flex flex-col p-1 bg-[#ffffff59] w-full rounded-md items-center">
                 <div className="flex flex-row w-full items-center">
                     <label htmlFor="hour" className="w-1/2 relative">Hour
                         <input
@@ -123,7 +123,7 @@ export const TimerSection = () => {
                 <button className="block mt-3 bg-white w-1/2 py-1 rounded-md" disabled={active}>Start</button>
             </form>
 
-            <div className="w-full mt-10 flex justify-center">
+            <div className="w-full mt-1 flex justify-center">
                 {active && <p>{`${displayTime.displayHour} : ${displayTime.displayMinutes} : ${displayTime.displaySeconds}`}</p>}
             </div>
         </div>
