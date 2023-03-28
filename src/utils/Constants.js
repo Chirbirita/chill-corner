@@ -4,5 +4,5 @@ export const reducerCases = {
   SET_PLAYLISTS: "SET_PLAYLISTS",
   SET_PLAYLIST: "SET_PLAYLIST",
   SET_PLAYLIST_ID: "SET_PLAYLIST_ID",
-  
+  SET_THEME: "SET_THEME"
 };

@@ -4,10 +4,9 @@ import logo from '../assets/images/logo.jpg'
 
 export default function Login() {
   const handleClick = async () => {
-
-    const client_id = "be9041803e9c4b31b255f5745792ceb4"; //"6222cdaf6ce34dcf8b682a6e7dc404a8";
+    console.log(import.meta.env.VITE_NEXT_PUBLIC_CLIENT_ID)
+    const client_id = import.meta.env.VITE_NEXT_PUBLIC_CLIENT_ID;
     const redirect_uri = "http://localhost:5173/";
-
     const api_uri = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-private",

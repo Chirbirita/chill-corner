@@ -15,6 +15,7 @@ export default function PlayerControls() {
 
   const changeState = async () => {
     const state = playerState ? "pause" : "play";
+    console.log(state)
     await axios.put(
       `https://api.spotify.com/v1/me/player/${state}`,
       {},
@@ -25,7 +26,6 @@ export default function PlayerControls() {
         },
       }
     );
-    console.log(token);
     dispatch({
       type: reducerCases.SET_PLAYER_STATE,
       playerState: !playerState,
@@ -90,12 +90,13 @@ export default function PlayerControls() {
 }
 
 const Container = styled.div`
+margin-top: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
   svg {
-    color: #b3b3b3;
+    color: #000000;
     transition: 0.2s ease-in-out;
     &:hover {
       color: white;

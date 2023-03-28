@@ -8,64 +8,71 @@ export const initialState = {
   currentPlaying: null,
   playerState: false,
   selectedPlaylist: null,
-  selectedPlaylistId:"37i9dQZF1DX1IeqVkK7Ebc",
-  
+  selectedPlaylistId: "37i9dQZF1DX8Uebhn9wzrS",
+  themeBackground: 'src/assets/images/random.jpg'
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case reducerCases.SET_TOKEN :{
-      return{
+    case reducerCases.SET_TOKEN: {
+      return {
         ...state,
         token: action.token,
       }
     }
 
-    case reducerCases.SET_USER:{
+    case reducerCases.SET_USER: {
       return {
         ...state,
         userInfo: action.userInfo,
       };
     }
 
-    case reducerCases.SET_PLAYLISTS:{
+    case reducerCases.SET_PLAYLISTS: {
       return {
         ...state,
         playlists: action.playlists,
       };
     }
 
-    case reducerCases.SET_PLAYLIST:{
+    case reducerCases.SET_PLAYLIST: {
       return {
         ...state,
         selectedPlaylist: action.selectedPlaylist,
       };
     }
 
-    case reducerCases.SET_PLAYLIST_ID:{
+    case reducerCases.SET_PLAYLIST_ID: {
       return {
         ...state,
         selectedPlaylistId: action.selectedPlaylistId,
       };
     }
 
-    case reducerCases.SET_PLAYING:{
+    case reducerCases.SET_PLAYING: {
       return {
         ...state,
         currentPlaying: action.currentPlaying,
       };
     }
-    case reducerCases.SET_PLAYER_STATE:{
+    case reducerCases.SET_PLAYER_STATE: {
       return {
         ...state,
         playerState: action.playerState,
       };
     }
+
+    case reducerCases.SET_THEME: {
+      return {
+        ...state,
+        themeBackground: action.themeBackground
+      };
+    }
     default:
       return state;
   };
-    
-  
+
+
 };
 
 export default reducer;

@@ -4,7 +4,8 @@ import axios from "axios";
 import { useStateProvider } from "../utils/StateProvider";
 import { reducerCases } from "../utils/Constants";
 export default function CurrentTrack() {
-  const [{ token, currentPlaying }, dispatch] = useStateProvider();
+  const [{ token, currentPlaying, selectedPlaylist }, dispatch] = useStateProvider();
+
   useEffect(() => {
     const getCurrentTrack = async () => {
       const response = await axios.get(
@@ -13,11 +14,11 @@ export default function CurrentTrack() {
           headers: {
             Authorization: "Bearer " + token,
             "Content-Type": "application/json",
-            
+
           },
         }
       );
-      console.log(response);
+
       if (response.data !== "") {
         const currentPlaying = {
           id: response.data.item.id,
@@ -31,13 +32,14 @@ export default function CurrentTrack() {
       }
     };
     getCurrentTrack();
-  }, [token, dispatch]);
+  }, [token, dispatch, currentPlaying, selectedPlaylist]);
+  
   return (
     <Container>
       {currentPlaying && (
         <div className="track">
           <div className="track__image">
-            <img src={currentPlaying.image} alt="currentPlaying" />
+            <img className="h-8" src={currentPlaying.image} alt="currentPlaying" />
           </div>
           <div className="track__info">
             <h4 className="track__info__track__name">{currentPlaying.name}</h4>
@@ -66,7 +68,7 @@ const Container = styled.div`
         color: white;
       }
       &__track__artists {
-        color: #b3b3b3;
+        color: #000000;
       }
     }
   }
