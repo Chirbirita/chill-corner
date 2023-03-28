@@ -1,9 +1,8 @@
-import { useState, useRef, useEffect, useContext } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import useTimer from './useTimer';
-//import SecondsContext from './SecondsContext';
+
 
 export const TimerSection = () => {
-  //const [_, setSeconds] = useContext(SecondsContext);
   const [time, setTime] = useState({
     hour: '',
     minutes: '',
@@ -15,16 +14,32 @@ export const TimerSection = () => {
     displaySeconds: 0,
   });
 
-  // const [displayTime] = useTimer(time)
-
   const [active, setActive] = useState(false);
 
   const hourRef = useRef();
   const minsRef = useRef();
+  const timerRef = useRef();
 
-  useEffect(() => {
-    setTimeout(() => {});
-  });
+
+  const updateTimer = (targetTime) => {
+    const now = new Date();
+    const timeDifference = targetTime.getTime() - now.getTime();
+
+    if (timeDifference < 1) {
+      clearInterval(timerRef.current);
+      setActive(false);
+    } else {
+      setDisplayTime((prevDisplayTime) => ({
+        displayHour: Math.floor(
+          (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        ),
+        displayMinutes: Math.floor(
+          (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+        ),
+        displaySeconds: Math.floor((timeDifference % (1000 * 60)) / 1000),
+      }));
+    }
+  };
 
   const submitTimer = (e) => {
     e.preventDefault();
@@ -43,78 +58,30 @@ export const TimerSection = () => {
       targetTime.getMinutes() + parseInt(minsRef.current.value)
     );
 
-    const countDownTimer = setInterval(() => {
-      updateTimer(targetTime, countDownTimer);
+    timerRef.current = setInterval(() => {
+      updateTimer(targetTime);
     }, 1000);
   };
 
-  const updateTimer = (targetTime, countDownTimer) => {
-    const now = new Date();
-    const timeDifference = targetTime.getTime() - now.getTime();
-
-    if (timeDifference < 1) {
-      clearInterval(countDownTimer);
-      setActive(false);
-      //setSeconds(0);
-    } else {
-      setDisplayTime((prevDisplayTime) => ({
-        displayHour: Math.floor(
-          (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        ),
-        displayMinutes: Math.floor(
-          (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
-        ),
-        displaySeconds: Math.floor((timeDifference % (1000 * 60)) / 1000),
-      }));
-      //setSeconds(Math.floor((timeDifference % (1000 * 60)) / 1000));
-    }
-
-    // const submitTimer = (e) => {
-    //     e.preventDefault()
-    //     setActive(true)
-    //     setTime(prevTime => {
-    //         return {
-    //             hour: '',
-    //             minutes: '',
-    //         }
-    //     })
-
-    //     // get current time
-    //     const targetTime = new Date()
-
-    //     //add user's input to current time
-    //     targetTime.setHours(targetTime.getHours() + hourRef.current.value)
-    //     //targetTime.setHours(hourRef.current.value)
-    //     targetTime.setMinutes(targetTime.getMinutes() + minsRef.current.value)
-
-    //     const countDownTimer = setInterval(() => {
-    //         const now = new Date();
-    //         // current new current time from user's current time
-    //         const timeDifference = targetTime.getTime() - now.getTime();
-
-    //         // if difference in time is less than 0, end timer
-    //         if (timeDifference < 1) {
-    //             clearInterval(countDownTimer)
-    //         } else {
-    //             setDisplayTime(prevDisplayTime => {
-    //                 return {
-    //                     displayHour: Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-    //                     displayMinutes: Math.floor((timeDifference % (1000 * 60 * 60 )) / (1000 * 60 )),
-    //                     displaySeconds: Math.floor((timeDifference % (1000 * 60)) / 1000)
-    //                 }
-    //             })
-    //             setSeconds(Math.floor((timeDifference % (1000 * 60)) / 1000))
-    //         }
-    //     }, 1000)
-    // Get current time
-  };
-
-  // set active when timer exhausts or when user cancels
-  const handleTimerChange = (e) => {
+  const pauseTimer = (e) => {
     e.preventDefault();
+    clearInterval(timerRef.current);
+    setActive(false);
   };
 
-  const activeState = active === true ? 'disable' : '';
+  const resetTimer = () => {
+    clearInterval(timerRef.current);
+    setTime({
+      hour: '',
+      minutes: '',
+    });
+    setDisplayTime({
+      displayHour: 0,
+      displayMinutes: 0,
+      displaySeconds: 0,
+    });
+    setActive(false);
+  };
 
   return (
     <div>
@@ -175,14 +142,20 @@ export const TimerSection = () => {
         <div className="container relative flex justify-center">
           <button
             className="rounded bg-green-500 py-2 px-4 text-white"
-            style={{ marginRight: '80px' }}
+            style={{ marginRight: '10px' }}
             disabled={active}
           >
             Start
           </button>
+          <button
+            className="rounded bg-red-500 py-2 px-4 text-white"
+            onClick={resetTimer}
+            disabled={!active}
+          >
+            Reset
+          </button>
         </div>
       </form>
-
       <div className="mt-1 flex w-full justify-center">
         {active && (
           <p>{`${displayTime.displayHour
@@ -195,5 +168,5 @@ export const TimerSection = () => {
         )}
       </div>
     </div>
-  );
-};
+)};
+
