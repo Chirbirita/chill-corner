@@ -1,9 +1,8 @@
 import { useState, useRef, useEffect, useContext } from "react"
 import useTimer from "./useTimer"
-import SecondsContext from "./SecondsContext"
 
 export const TimerSection = () => {
-    const [_, setSeconds] = useContext(SecondsContext)
+
     const [time, setTime] = useState({
         hour: '',
         minutes: '',
@@ -30,6 +29,8 @@ export const TimerSection = () => {
 
     const submitTimer = (e) => {
         e.preventDefault()
+
+        if (!hourRef.current.value && !minsRef.current.value) return
         setActive(true)
         setTime(prevTime => {
             return {
@@ -62,7 +63,6 @@ export const TimerSection = () => {
                         displaySeconds: Math.floor((timeDifference % (1000 * 60)) / 1000)
                     }
                 })
-                setSeconds(Math.floor((timeDifference % (1000 * 60)) / 1000))
             }
         }, 1000)
     }
@@ -79,7 +79,7 @@ export const TimerSection = () => {
 
     return (
         <div>
-            <form onSubmit={submitTimer} className="relative flex flex-col p-1 bg-[#ffffff59] w-full rounded-md items-center">
+            <form onSubmit={submitTimer} className="relative flex flex-col p-1 bg-[#ffffff59] w-full rounded-md items-center text-sm h-60">
                 <div className="flex flex-row w-full items-center">
                     <label htmlFor="hour" className="w-1/2 relative">Hour
                         <input

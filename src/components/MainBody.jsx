@@ -1,4 +1,4 @@
-import React, { useState,useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components'
 import { useContext } from 'react'
 import BGContext from './BGContext'
@@ -11,11 +11,10 @@ import Footer from './Footer';
 
 
 
- 
+
 
 const MainBody = () => {
-
-  const [{ token }, dispatch] = useStateProvider();
+  const [{ token, themeBackground }, dispatch] = useStateProvider();
   const [navBackground, setNavBackground] = useState(false);
   const [headerBackground, setHeaderBackground] = useState(false);
   const bodyRef = useRef();
@@ -35,9 +34,9 @@ const MainBody = () => {
           Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
-        
+
       });
-      
+
       const userInfo = {
         userId: data.id,
         userUrl: data.external_urls.spotify,
@@ -46,39 +45,30 @@ const MainBody = () => {
       dispatch({ type: reducerCases.SET_USER, userInfo });
     };
     getUserInfo();
-    
-  },[dispatch,token]);
-      
- 
 
-  const [background, _] = useContext(BGContext)
-  const choosenBg = background === null ? 'bg-whtie' : background
+  }, [dispatch, token]);
+
+
+
   return (
-    
-      <div
-        style={{ backgroundImage: `url(${choosenBg})` }}
-        className="glass my-auto h-5/6 w-full rounded-lg bg-center bg-cover"
-      >
-        <Container>
-          
-            <div className="body" ref={bodyRef} onScroll={bodyScrolled}>
-              <Navbar navBackground={navBackground} />
-              <div className="body__contents">
-                <Body headerBackground={headerBackground} />
-              </div>
-            </div>
-          
-      
-          <div className="chill__footer">
-            <Footer />
-            
-          </div>
-      
-        </Container>
-        
 
+    <div
+      style={{ backgroundImage: `url(${themeBackground})` }}
+      className="glass my-auto h-5/6 w-full rounded-lg bg-center bg-cover flex flex-col items-center justify-center"
+    >
+
+      <div className="chill__footer flex justify-center h-40 w-full">
+        <Footer />
       </div>
-    
+
+      <div className="body__contents flex justify-center h-80 w-full">
+        <Body headerBackground={headerBackground} />
+      </div>
+
+
+
+    </div>
+
   );
 };
 export default MainBody;
@@ -91,7 +81,7 @@ const Container = styled.div`
   grid-template-rows: 85vh 15vh;
     .body {
       height: 100%;
-      width: 100%;
+      width: 50%;
       overflow: auto;
       &::-webkit-scrollbar {
         width: 0.7rem;
