@@ -15,6 +15,7 @@ export const TimerSection = () => {
   });
 
   const [active, setActive] = useState(false);
+  const [timerEnded, setTimerEnded] = useState(false); // NEW CONFETTI LINE
   const [showConfetti, setShowConfetti] = useState(false); // NEW CONFETTI LINE
 
   const hourRef = useRef();
@@ -37,8 +38,8 @@ export const TimerSection = () => {
     if (timeDifference < 1) {
       clearInterval(timerRef.current);
       setActive(false);
+      setTimerEnded(true);
       setShowConfetti(true); // NEW CONFETTI LINE
-
     } else {
       setDisplayTime((prevDisplayTime) => ({
         displayHour: Math.floor(
@@ -67,7 +68,8 @@ export const TimerSection = () => {
     timerRef.current = setInterval(() => {
       updateTimer();
     }, 1000);
-    //setActive(true); //new line
+    setActive(true); //new line IS THIS LINE NECESSARY?
+    setShowConfetti(false); // NEW CONFETTI LINE
   };
 
   const pauseTimer = () => {
@@ -76,6 +78,7 @@ export const TimerSection = () => {
     remainingTimeRef.current =
       targetTimeRef.current.getTime() - new Date().getTime(); // store remaining time left in timer
     updateTimer();
+    setTimerEnded(false);
   };
 
   const resetTimer = () => {
@@ -91,6 +94,7 @@ export const TimerSection = () => {
     });
     setActive(false);
     remainingTimeRef.current = null; // reset remaining time when timer is reset
+    setTimerEnded(false); // NEW CONFETTI LINE
     setShowConfetti(false); // NEW CONFETTI LINE
   };
 
@@ -106,15 +110,15 @@ export const TimerSection = () => {
 
   return (
     <div>
-          <div>
-      {showConfetti && (
-        <Confetti
-          width={window.innerWidth}
-          height={window.innerHeight}
-          recycle={false}
-          numberOfPieces={500}
-        />
-      )}
+      <div>
+        {timerEnded && showConfetti && (
+          <Confetti
+            width={window.innerWidth}
+            height={window.innerHeight}
+            recycle={false}
+            numberOfPieces={500}
+          />
+        )}
       </div>
       <form
         onSubmit={handleSubmit}
@@ -214,4 +218,3 @@ export const TimerSection = () => {
     </div>
   );
 };
-
