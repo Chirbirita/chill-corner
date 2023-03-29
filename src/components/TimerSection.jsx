@@ -105,7 +105,9 @@ export const TimerSection = () => {
         onSubmit={handleSubmit}
         className="relative flex w-full flex-col items-center rounded-md bg-[#ffffff59] p-4"
       >
-        <p>Countdown timer</p>
+        <p className="text-m rounded-md bg-[#ffffff59] bg-opacity-95 p-2 font-bold">
+          Countdown timer
+        </p>
         <div className="flex w-full flex-row items-center">
           <label htmlFor="hour" className="relative w-1/2">
             Hours
