@@ -19,10 +19,18 @@ export const TimerSection = () => {
   const minsRef = useRef();
   const timerRef = useRef();
   const targetTimeRef = useRef();
+  const remainingTimeRef = useRef(); // new ref to store remaining time left in timer
 
   const updateTimer = () => {
     const now = new Date();
-    const timeDifference = targetTimeRef.current.getTime() - now.getTime();
+    let timeDifference;
+    if (remainingTimeRef.current) {
+      // if remaining time is stored, use it to calculate time difference
+      timeDifference = remainingTimeRef.current - now.getTime();
+    } else {
+      // if remaining time is not stored, calculate time difference from target time
+      timeDifference = targetTimeRef.current.getTime() - now.getTime();
+    }
 
     if (timeDifference < 1) {
       clearInterval(timerRef.current);
@@ -37,26 +45,32 @@ export const TimerSection = () => {
         ),
         displaySeconds: Math.floor((timeDifference % (1000 * 60)) / 1000),
       }));
+      remainingTimeRef.current = now.getTime() + timeDifference; // update remaining time
     }
   };
 
   const startTimer = () => {
-    const targetTime = new Date();
-
-    targetTime.setHours(
-      targetTime.getHours() + parseInt(hourRef.current.value)
-    );
-    targetTime.setMinutes(
-      targetTime.getMinutes() + parseInt(minsRef.current.value)
-    );
+    const now = new Date();
+    const targetTime = remainingTimeRef.current
+      ? new Date(now.getTime() + remainingTimeRef.current)
+      : new Date(
+          now.getTime() + time.hour * 60 * 60 * 1000 + time.minutes * 60 * 1000
+        );
 
     targetTimeRef.current = targetTime;
-    timerRef.current = setInterval(updateTimer, 1000);
+    remainingTimeRef.current = null;
+
+    timerRef.current = setInterval(() => {
+      updateTimer();
+    }, 1000);
+    //setActive(true); //new line
   };
 
   const pauseTimer = () => {
     clearInterval(timerRef.current);
     setActive(false);
+    remainingTimeRef.current =
+      targetTimeRef.current.getTime() - new Date().getTime(); // store remaining time left in timer
     updateTimer();
   };
 
@@ -72,6 +86,7 @@ export const TimerSection = () => {
       displaySeconds: 0,
     });
     setActive(false);
+    remainingTimeRef.current = null; // reset remaining time when timer is reset
   };
 
   const handleSubmit = (e) => {
@@ -88,11 +103,12 @@ export const TimerSection = () => {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="relative flex w-full flex-col items-center rounded-md bg-[#8bc34a] p-1"
+        className="relative flex w-full flex-col items-center rounded-md bg-[#ffffff59] p-4"
       >
+        <p>Countdown timer</p>
         <div className="flex w-full flex-row items-center">
           <label htmlFor="hour" className="relative w-1/2">
-            Hour
+            Hours
             <input
               type="number"
               name="hour"
@@ -111,7 +127,7 @@ export const TimerSection = () => {
               }}
               disabled={active}
               ref={hourRef}
-              className="w-[90%] rounded-sm py-1"
+              className="w-[90%] rounded-md py-1"
             />
           </label>
           <label htmlFor="minute" className="relative w-1/2">
@@ -136,28 +152,30 @@ export const TimerSection = () => {
               ref={minsRef}
               max="59"
               min="0"
-              className="w-[90%] rounded-sm py-1"
+              className="w-[90%] rounded-md py-1"
             />
           </label>
         </div>
-        <div className="container relative flex justify-center">
+        <div className="container relative flex justify-center space-x-4">
           <button
-            className="rounded bg-green-500 py-2 px-4 text-white"
-            style={{ marginRight: '10px' }}
+            className="rounded bg-white px-4 text-black"
+            style={{ marginTop: '10px' }}
             disabled={active}
           >
             Start
           </button>
           {active ? (
             <button
-              className="rounded bg-yellow-500 py-2 px-4 text-white"
+              className="rounded bg-white px-4 text-black"
+              style={{ marginTop: '10px' }}
               onClick={pauseTimer}
             >
               Pause
             </button>
           ) : null}
           <button
-            className="rounded bg-red-500 py-2 px-4 text-white"
+            className="rounded bg-white py-2 px-4 text-black"
+            style={{ marginTop: '10px' }}
             onClick={resetTimer}
             disabled={!active}
           >
