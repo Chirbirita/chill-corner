@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import useTimer from './useTimer';
 
-
 export const TimerSection = () => {
   const [time, setTime] = useState({
     hour: '',
@@ -19,11 +18,11 @@ export const TimerSection = () => {
   const hourRef = useRef();
   const minsRef = useRef();
   const timerRef = useRef();
+  const targetTimeRef = useRef();
 
-
-  const updateTimer = (targetTime) => {
+  const updateTimer = () => {
     const now = new Date();
-    const timeDifference = targetTime.getTime() - now.getTime();
+    const timeDifference = targetTimeRef.current.getTime() - now.getTime();
 
     if (timeDifference < 1) {
       clearInterval(timerRef.current);
@@ -41,14 +40,7 @@ export const TimerSection = () => {
     }
   };
 
-  const submitTimer = (e) => {
-    e.preventDefault();
-    setActive(true);
-    setTime({
-      hour: hourRef.current.value,
-      minutes: minsRef.current.value,
-    });
-
+  const startTimer = () => {
     const targetTime = new Date();
 
     targetTime.setHours(
@@ -58,15 +50,14 @@ export const TimerSection = () => {
       targetTime.getMinutes() + parseInt(minsRef.current.value)
     );
 
-    timerRef.current = setInterval(() => {
-      updateTimer(targetTime);
-    }, 1000);
+    targetTimeRef.current = targetTime;
+    timerRef.current = setInterval(updateTimer, 1000);
   };
 
-  const pauseTimer = (e) => {
-    e.preventDefault();
+  const pauseTimer = () => {
     clearInterval(timerRef.current);
     setActive(false);
+    updateTimer();
   };
 
   const resetTimer = () => {
@@ -83,10 +74,20 @@ export const TimerSection = () => {
     setActive(false);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setActive(true);
+    setTime({
+      hour: hourRef.current.value,
+      minutes: minsRef.current.value,
+    });
+    startTimer();
+  };
+
   return (
     <div>
       <form
-        onSubmit={submitTimer}
+        onSubmit={handleSubmit}
         className="relative flex w-full flex-col items-center rounded-md bg-[#8bc34a] p-1"
       >
         <div className="flex w-full flex-row items-center">
@@ -147,6 +148,14 @@ export const TimerSection = () => {
           >
             Start
           </button>
+          {active ? (
+            <button
+              className="rounded bg-yellow-500 py-2 px-4 text-white"
+              onClick={pauseTimer}
+            >
+              Pause
+            </button>
+          ) : null}
           <button
             className="rounded bg-red-500 py-2 px-4 text-white"
             onClick={resetTimer}
@@ -168,5 +177,5 @@ export const TimerSection = () => {
         )}
       </div>
     </div>
-)};
-
+  );
+};
