@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import useTimer from './useTimer';
+import Confetti from 'react-confetti';
 
 export const TimerSection = () => {
   const [time, setTime] = useState({
@@ -14,6 +15,7 @@ export const TimerSection = () => {
   });
 
   const [active, setActive] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false); // NEW CONFETTI LINE
 
   const hourRef = useRef();
   const minsRef = useRef();
@@ -35,6 +37,8 @@ export const TimerSection = () => {
     if (timeDifference < 1) {
       clearInterval(timerRef.current);
       setActive(false);
+      setShowConfetti(true); // NEW CONFETTI LINE
+
     } else {
       setDisplayTime((prevDisplayTime) => ({
         displayHour: Math.floor(
@@ -87,6 +91,7 @@ export const TimerSection = () => {
     });
     setActive(false);
     remainingTimeRef.current = null; // reset remaining time when timer is reset
+    setShowConfetti(false); // NEW CONFETTI LINE
   };
 
   const handleSubmit = (e) => {
@@ -101,6 +106,16 @@ export const TimerSection = () => {
 
   return (
     <div>
+          <div>
+      {showConfetti && (
+        <Confetti
+          width={window.innerWidth}
+          height={window.innerHeight}
+          recycle={false}
+          numberOfPieces={500}
+        />
+      )}
+      </div>
       <form
         onSubmit={handleSubmit}
         className="relative flex w-full flex-col items-center rounded-md bg-[#ffffff59] p-4"
