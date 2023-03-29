@@ -124,6 +124,7 @@ export const TimerSection = () => {
         onSubmit={handleSubmit}
         className="relative flex w-full flex-col items-center rounded-md bg-[#ffffff59] p-4"
       >
+
         <p className="text-m mb-2 rounded-md bg-[#ffffff59] bg-opacity-95 p-2 font-bold opacity-75">
           Countdown timer
         </p>
@@ -148,11 +149,13 @@ export const TimerSection = () => {
               }}
               disabled={active}
               ref={hourRef}
+
               className="ml-3 w-1/3 rounded-md py-1"
             />
           </label>
           <label htmlFor="minute" className="relative w-1/2 p-1">
             Minutes:
+
             <input
               type="number"
               name="minutes"
@@ -173,13 +176,17 @@ export const TimerSection = () => {
               ref={minsRef}
               max="59"
               min="0"
+
               className="ml-3 w-1/3 rounded-md py-1"
+
             />
           </label>
         </div>
         <div className="container relative flex justify-center space-x-4">
           <button
+
             className="rounded bg-white px-4 text-black hover:bg-slate-50 focus:bg-slate-500"
+
             style={{ marginTop: '10px' }}
             disabled={active}
           >
@@ -187,7 +194,9 @@ export const TimerSection = () => {
           </button>
           {active ? (
             <button
+
               className="rounded bg-white px-4 text-black hover:bg-slate-50 focus:bg-slate-500"
+
               style={{ marginTop: '10px' }}
               onClick={pauseTimer}
             >
@@ -195,7 +204,9 @@ export const TimerSection = () => {
             </button>
           ) : null}
           <button
+
             className="rounded bg-white py-2 px-4 text-black hover:bg-slate-50 focus:bg-slate-500"
+
             style={{ marginTop: '10px' }}
             onClick={resetTimer}
             disabled={!active}

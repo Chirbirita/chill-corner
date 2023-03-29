@@ -9,7 +9,7 @@ import PlayerControls from "./PlayerControls";
 export default function Footer() {
   return (
     <Container>
-      <CurrentTrack />
+      {/* <CurrentTrack /> */}
       <PlayerControls />
     </Container>
   );
@@ -17,7 +17,7 @@ export default function Footer() {
 
 const Container = styled.div`
   height: 100%;
-  width: 60%;
+  width: 70%;
   background-color: #ffffff59;
   border-top: 1px solid #ffffff59;
   display: flex;
