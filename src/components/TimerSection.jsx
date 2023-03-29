@@ -204,17 +204,19 @@ export const TimerSection = () => {
           </button>
         </div>
       </form>
-      <div className="mt-1 flex w-full justify-center">
-        {active && (
-          <p>{`${displayTime.displayHour
-            .toString()
-            .padStart(2, '0')} : ${displayTime.displayMinutes
-            .toString()
-            .padStart(2, '0')} : ${displayTime.displaySeconds
-            .toString()
-            .padStart(2, '0')}`}</p>
-        )}
+      <div className="text-m mt-1 flex w-full justify-center rounded-md bg-[#ffffff59] bg-opacity-95 p-2 font-bold">
+        <p>{`${displayTime.displayHour
+          .toString()
+          .padStart(2, '0')} : ${displayTime.displayMinutes
+          .toString()
+          .padStart(2, '0')} : ${displayTime.displaySeconds
+          .toString()
+          .padStart(2, '0')}`}</p>
       </div>
     </div>
   );
 };
+
+//<div>{active && (
+
+//)}</div>
