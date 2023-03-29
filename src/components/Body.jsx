@@ -1,15 +1,22 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useStateProvider } from "../utils/StateProvider";
 import { AiFillClockCircle } from "react-icons/ai";
 import { reducerCases } from "../utils/Constants";
+import useAuth from "./useAuth"
+import SpotifyWebApi from "spotify-web-api-node"
 
+const spotifyApi = new SpotifyWebApi({
+  clientId: "4f2906a5d36046439e8ae23a23f6acc9",
+})
 
 export default function Body({ headerBackground }) {
 
-  const [{ token, selectedPlaylist, selectedPlaylistId }, dispatch] = useStateProvider();
-
+  const [{ token, code, song, selectedPlaylist, selectedPlaylistId }, dispatch] = useStateProvider();
+  const accessToken = useAuth(code)
+  const [currentSong, setCurrentSong] = useState();
+  
   useEffect(() => {
     const getInitialPlaylist = async () => {
       const response = await axios.get(
@@ -21,6 +28,7 @@ export default function Body({ headerBackground }) {
           }
         }
       )
+
 
       const selectedPlaylist = {
         id: response.data.id,
@@ -46,6 +54,40 @@ export default function Body({ headerBackground }) {
     }
     getInitialPlaylist();
   }, [token, dispatch, selectedPlaylistId]);
+
+  //get play list by mood  
+  useEffect(() => {
+    if (!accessToken) return
+    spotifyApi.setAccessToken(accessToken)
+   //sp test
+   spotifyApi.searchPlaylists('chill')
+   .then(res => res.body.playlists)
+   .then(response => {
+       console.log("searchPlaylists response")
+       console.log(response)
+       const selectedPlaylist = {
+        id: 1,
+        name: "test",
+        description: "desc",
+        tracks: response.items
+        // image: "test",
+        // tracks: response.playlists.items.map(({ track }) => ({
+        //   id: 2,
+        //   name: "track.name",
+        //   artists: "test",
+        //   image: "img ",
+        //   duration: "dur",
+          //album: track.album.name,
+          //context_uri: track.album.uri,
+          //track_number: track.track_number,
+        // })),
+
+      };
+
+      dispatch({ type: reducerCases.SET_PLAYLIST, selectedPlaylist });
+   })
+     //sp test ends
+ }, [accessToken])
 
   const playTrack = async (
     id,
@@ -90,6 +132,77 @@ export default function Body({ headerBackground }) {
     var seconds = ((ms % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
   };
+
+  useEffect(() => {
+    if(currentSong!= undefined){
+      console.log("song set", currentSong)
+      dispatch({ type: reducerCases.SET_SONG, song });
+    }    
+  }, [dispatch, song]);
+  // return (
+  //   <Container className="w-[60%] bg-[#ffffff59] mt-16 rounded-lg overflow-scroll">
+  //     <div>body selected palylist</div>
+  //     {selectedPlaylist && (
+  //       <>
+  //       <div>play list is available</div>
+  //       <div className="list">
+  //           <div className="header-row">
+  //             <div className="col">
+  //               <span>#</span>
+  //             </div>
+  //             <div className="col">
+  //               <span>TITLE</span>
+  //             </div>
+  //             <div className="col">
+  //               <span>ALBUM</span>
+  //             </div>
+  //             <div className="col">
+  //               <span>
+  //                 <AiFillClockCircle />
+  //               </span>
+  //             </div>
+  //           </div>
+  //           <div className="tracks">
+  //             {selectedPlaylist.tracks.map(
+  //               (
+  //                 {
+  //                   id,
+  //                   name,
+  //                   uri
+  //                 },
+  //                 index
+  //               ) => {
+  //                 return (
+  //                   <div
+  //                     className="row"
+  //                     key={index}
+  //                     onClick={() =>
+  //                       setCurrentSong(uri)
+  //                     }
+  //                   >
+  //                     <div className="col">
+  //                       <span>{index + 1}</span>
+  //                     </div>
+  //                     <div className="col detail">
+  //                       <div className="image">
+  //                       </div>
+  //                       <div className="info">
+  //                         <span className="name">{name}</span>
+  //                         {/* <span>{artists}</span> */}
+  //                       </div>
+  //                     </div>
+                      
+  //                   </div>
+  //                 );
+  //               }
+  //             )}
+  //           </div>
+            
+  //           </div>
+  //       </>
+  //     )}
+  //   </Container>
+  // );
 
   return (
     <Container className="w-[60%] bg-[#ffffff59] mt-16 rounded-lg overflow-scroll">

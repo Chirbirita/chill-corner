@@ -9,11 +9,15 @@ import { reducerCases } from '../utils/Constants';
 import Body from './Body';
 import Footer from './Footer';
 import Dashboard from './Dashboard';
-
+import SpotifyWebApi from "spotify-web-api-node"
+import useAuth from "./useAuth"
+import Player from "./Player"
+import Testapi from './Testapi';
 
 
 const MainBody = () => {
-  const [{ token, themeBackground }, dispatch] = useStateProvider();
+  
+  const [{ token, code, themeBackground }, dispatch] = useStateProvider();
   const [navBackground, setNavBackground] = useState(false);
   const [headerBackground, setHeaderBackground] = useState(false);
   const bodyRef = useRef();
@@ -48,7 +52,6 @@ const MainBody = () => {
   }, [dispatch, token]);
 
 
-
   return (
 
     <div
@@ -58,6 +61,10 @@ const MainBody = () => {
 
       <div className="chill__footer flex justify-center h-40 w-full">
         <Footer />
+      </div>
+      <div>
+        <Dashboard code={code} />
+        {/* <Testapi code={code} /> */}
       </div>
 
       <div className="body__contents flex justify-center h-80 w-full">

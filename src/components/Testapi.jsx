@@ -9,45 +9,45 @@ import axios from "axios"
 
 const spotifyApi = new SpotifyWebApi({
   clientId: "4f2906a5d36046439e8ae23a23f6acc9",
-  //clientId: "8b945ef10ea24755b83ac50cede405a0",
 })
 
-export default function Dashboard({ code }) {
+export default function Testapi({ code }) {
   const accessToken = useAuth(code) 
+  //const songs = useSongs(code) 
   const [search, setSearch] = useState("")
   const [searchResults, setSearchResults] = useState([])
   const [playingTrack, setPlayingTrack] = useState()
-  // const [lyrics, setLyrics] = useState("")
 
   function chooseTrack(track) {
     setPlayingTrack(track)
     setSearch("")
-    // setLyrics("")
   }
 
+
   // useEffect(() => {
-  //   if (!playingTrack) return
+  //    if (!accessToken) return
+  //    spotifyApi.setAccessToken(accessToken)
+  //   // if (!songs) {
+  //   //   console.log("songs no")
+  //   //   return
+  //   // }
+  //   // console.log("songs")
 
-  //   axios
-  //     .get("http://localhost:3001/lyrics", {
-  //       params: {
-  //         track: playingTrack.title,
-  //         artist: playingTrack.artist,
-  //       },
-  //     })
-  //     .then(res => {
-  //       setLyrics(res.data.lyrics)
-  //     })
-  // }, [playingTrack])
+  //   //sp test
+  //   spotifyApi.searchPlaylists('workout').then(res => {
+  //       console.log("searchPlaylists token : " + accessToken)
+  //       console.log(res)
+      
+  //   })
+        
 
-  useEffect(() => {
-    if (!accessToken) return
-    spotifyApi.setAccessToken(accessToken)
-  }, [accessToken])
+  //     //sp test ends
+  // }, [accessToken])
+
 
   useEffect(() => {
     if (!search) return setSearchResults([])
-    if (!accessToken) return <div>no access token</div>
+    if (!accessToken) return 
 
     let cancel = false
     spotifyApi.searchTracks(search).then(res => {
@@ -66,7 +66,8 @@ export default function Dashboard({ code }) {
           return {
             artist: track.artists[0].name,
             title: track.name,
-            uri: track.uri,
+            //uri: track.uri,
+            uri: 'spotify:playlist:37i9dQZF1EIgzSCNweQzPQ',
             albumUrl: smallestAlbumImage.url,
           }
         })
@@ -93,13 +94,9 @@ export default function Dashboard({ code }) {
             chooseTrack={chooseTrack}
           />
         ))}
-        {/* {searchResults.length === 0 && (
-          <div className="text-center" style={{ whiteSpace: "pre" }}>
-            {lyrics}
-          </div>
-        )} */}
       </div>
       <div>
+        <div>{accessToken}</div>
         <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
       </div>
 

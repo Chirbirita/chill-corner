@@ -3,6 +3,8 @@ import { reducerCases } from "./Constants";
 
 export const initialState = {
   token: null,
+  code:null,
+  song : null,
   userInfo: null,
   playlists: [],
   currentPlaying: null,
@@ -18,6 +20,20 @@ const reducer = (state, action) => {
       return {
         ...state,
         token: action.token,
+      }
+    }
+
+    case reducerCases.SET_CODE: {
+      return {
+        ...state,
+        code: action.code,
+      }
+    }
+
+    case reducerCases.SET_SONG: {
+      return {
+        ...state,
+        code: action.song,
       }
     }
 

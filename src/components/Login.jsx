@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import styled from "styled-components";
 import logo from '../assets/images/logo.jpg'
 
 export default function Login() {
+  
   const handleClick = async () => {
-    console.log(import.meta.env.VITE_NEXT_PUBLIC_CLIENT_ID)
-    const client_id = import.meta.env.VITE_NEXT_PUBLIC_CLIENT_ID;
+    //console.log(import.meta.env.VITE_NEXT_PUBLIC_CLIENT_ID)
+    const client_id = '4f2906a5d36046439e8ae23a23f6acc9';
     const redirect_uri = "http://localhost:5173/";
     const api_uri = "https://accounts.spotify.com/authorize";
     const scope = [
@@ -17,10 +19,17 @@ export default function Login() {
       "user-read-recently-played",
       "user-top-read",
     ];
-    window.location.href = `${api_uri}?client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${scope.join(
-      " "
-    )}&response_type=token&show_dialog=true`;
+    // window.location.href = `${api_uri}?client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${scope.join(
+    //   " "
+    // )}&response_type=token&show_dialog=true`;
+    const AUTH_URL =
+  "https://accounts.spotify.com/authorize?client_id=4f2906a5d36046439e8ae23a23f6acc9&response_type=code&redirect_uri=http://localhost:5173/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state"
+
+    
+  window.location.href = AUTH_URL;
   };
+
+
   return (
     <Container>
       <img
@@ -28,6 +37,7 @@ export default function Login() {
         alt="spotify"
       />
       <button onClick={handleClick}>Connect ChillCorner</button>
+      
     </Container>
   );
 }

@@ -4,11 +4,14 @@ import Login from './Login';
 import { reducerCases } from "../utils/Constants";
 import { useStateProvider } from "../utils/StateProvider";
 import WrapperContainer from './WrapperContainer';
+import axios from "axios";
+import useAuth from "./useAuth"
 
+const codeURL = new URLSearchParams(window.location.search).get("code")
 
 
 const Signin = () => {
-  const [{ token }, dispatch] = useStateProvider();
+  const [{ token, code }, dispatch] = useStateProvider();
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -20,12 +23,18 @@ const Signin = () => {
     document.title = "ChillCorner";
   }, [dispatch, token]);
 
+  useEffect(() => {
+    if(codeURL){
+      dispatch({ type: reducerCases.SET_CODE, code :codeURL });
+    }
+    
+  }, [dispatch, code]);
+
 
   return (
     <>
       <div>
-        {token ? <WrapperContainer /> : <Login />}
-
+        {codeURL ? <WrapperContainer code={ codeURL } /> : <Login />}
       </div>
     </>
   );
