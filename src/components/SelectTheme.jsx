@@ -52,10 +52,12 @@ const SelectTheme = () => {
 
     return (
         <div className='bg-[#ffffff59] w-full p-1 rounded-lg h-40 ' >
-            <h1 className="text-center text-sm" >
-                What is your mood today ?
+            <div className="bg-[#ffffff59] bg-opacity-95 rounded-md">
+            <h1 className="text-center text-xl opacity-75 p-3" >
+                What is your mood today ? 
             </h1>
-            <div className="flex flex-row gap-1 flex-wrap justify-center">
+            </div>
+            <div className="flex flex-row gap-1 flex-wrap justify-center pt-3">
                 {
                     moodOptions.map((mood, index) => (
                         <button className="bg-white px-4 py-1 rounded-md hover:bg-slate-50 focus:bg-slate-500 text-sm" key={index} onClick={() => { startPlaying(mood.bg_href, mood.id) }}>{mood.mood}</button>
