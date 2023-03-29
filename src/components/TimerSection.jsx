@@ -4,8 +4,8 @@ import Confetti from 'react-confetti';
 
 export const TimerSection = () => {
   const [time, setTime] = useState({
-    hour: '',
-    minutes: '',
+    hour: '0',
+    minutes: '0',
   });
 
   const [displayTime, setDisplayTime] = useState({
@@ -17,6 +17,7 @@ export const TimerSection = () => {
   const [active, setActive] = useState(false);
   const [timerEnded, setTimerEnded] = useState(false); // NEW CONFETTI LINE
   const [showConfetti, setShowConfetti] = useState(false); // NEW CONFETTI LINE
+  const [paused, setPaused] = useState(false);
 
   const hourRef = useRef();
   const minsRef = useRef();
@@ -74,11 +75,11 @@ export const TimerSection = () => {
 
   const pauseTimer = () => {
     clearInterval(timerRef.current);
-    setActive(false);
     remainingTimeRef.current =
       targetTimeRef.current.getTime() - new Date().getTime(); // store remaining time left in timer
     updateTimer();
     setTimerEnded(false);
+    setPaused(true);
   };
 
   const resetTimer = () => {
@@ -94,12 +95,14 @@ export const TimerSection = () => {
     });
     setActive(false);
     remainingTimeRef.current = null; // reset remaining time when timer is reset
-    setTimerEnded(false); // NEW CONFETTI LINE
-    setShowConfetti(false); // NEW CONFETTI LINE
+    setTimerEnded(false);
+    setShowConfetti(false);
+    setPaused(false); // reset the paused state variable
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setPaused(false); // reset the paused state variable when the timer is started again
     setActive(true);
     setTime({
       hour: hourRef.current.value,
@@ -124,7 +127,6 @@ export const TimerSection = () => {
         onSubmit={handleSubmit}
         className="relative flex w-full flex-col items-center rounded-md bg-[#ffffff59] p-4"
       >
-
         <p className="text-m mb-2 rounded-md bg-[#ffffff59] bg-opacity-95 p-2 font-bold opacity-75">
           Countdown timer
         </p>
@@ -149,13 +151,11 @@ export const TimerSection = () => {
               }}
               disabled={active}
               ref={hourRef}
-
               className="ml-3 w-1/3 rounded-md py-1"
             />
           </label>
           <label htmlFor="minute" className="relative w-1/2 p-1">
             Minutes:
-
             <input
               type="number"
               name="minutes"
@@ -176,17 +176,13 @@ export const TimerSection = () => {
               ref={minsRef}
               max="59"
               min="0"
-
               className="ml-3 w-1/3 rounded-md py-1"
-
             />
           </label>
         </div>
         <div className="container relative flex justify-center space-x-4">
           <button
-
             className="rounded bg-white px-4 text-black hover:bg-slate-50 focus:bg-slate-500"
-
             style={{ marginTop: '10px' }}
             disabled={active}
           >
@@ -194,9 +190,7 @@ export const TimerSection = () => {
           </button>
           {active ? (
             <button
-
               className="rounded bg-white px-4 text-black hover:bg-slate-50 focus:bg-slate-500"
-
               style={{ marginTop: '10px' }}
               onClick={pauseTimer}
             >
@@ -204,12 +198,10 @@ export const TimerSection = () => {
             </button>
           ) : null}
           <button
-
             className="rounded bg-white py-2 px-4 text-black hover:bg-slate-50 focus:bg-slate-500"
-
             style={{ marginTop: '10px' }}
             onClick={resetTimer}
-            disabled={!active}
+            disabled={!time.hour && !time.minutes}
           >
             Reset
           </button>
