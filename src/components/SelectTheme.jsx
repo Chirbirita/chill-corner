@@ -13,6 +13,7 @@ const SelectTheme = () => {
 
     // function to change bg and start the new mood playlist
     const startPlaying = async (bg_href, id) => {
+
         const response = await axios.get(
             `https://api.spotify.com/v1/playlists/${id}`,
             {
@@ -71,7 +72,3 @@ const SelectTheme = () => {
 }
 
 export default SelectTheme
-
-
-//https://open.spotify.com/playlist/37i9dQZF1EVHGWrwldPRtj?si=8ee1c24d4dda4f28
-//https://open.spotify.com/playlist/3WLDIcG4Cx2UOPy0rbFhQn?si=0378b36e7ac34377
