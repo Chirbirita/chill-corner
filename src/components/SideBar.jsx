@@ -3,8 +3,6 @@ import SelectTheme from './SelectTheme';
 import { useStateProvider } from '../utils/StateProvider';
 import { TimerSection } from './TimerSection';
 import chillCorner from '../assets/images/chill-corner.png'
-import Search from './Search';
-
 
 
 function SideBar() {
@@ -32,9 +30,6 @@ function SideBar() {
     }
   };
 
-  // Current issues:
-  // - user can input infitine number of 0s
-  // - 0 cannot be deleted when using backspace
   const handleMinutesChange = (event) => {
     const value = event.target.value;
     if (event.key === "Backspace") {
@@ -54,23 +49,21 @@ function SideBar() {
   const handleStartClick = () => {
     console.log(`Timer will start for ${hours} hours and ${minutes} minutes.`);
     // start timer countdown with specified amount of time
-    // text - from - indigo - 500 via - purple - 500 to - pink - 500
   };
 
   return (
     <div
       style={{ backgroundImage: `url(${themeBackground})` }}
-      className="relative glass my-auto h-5/6 w-2/6 rounded-lg pt-5 flex flex-col justify-center bg-cover px-3 min-w-[300px]"
+      className="flex flex-col w-[90%] mx-auto max-w-[300px] lg:max-w-[350px] md:h-5/6 gap-5 relative glass my-auto rounded-lg py-5 justify-center bg-cover px-3"
     >
-      <div className='absolute top-5 little-glass rounded-lg w-[92%]'>
+      
+      <div className='flex flex-col gap-4 md:justify-between lg:h-[450px]'>
+        {/* <Search/> */}
         <img
           src={chillCorner}
           alt='ChillCorner'
-          className='h-20 w-full'
+          className='h-15'
         />
-      </div>
-      <div className='h-[500px] flex flex-col justify-between'>
-        {/* <Search/> */}
         <SelectTheme />
         <TimerSection />
       </div>

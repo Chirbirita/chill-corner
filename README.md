@@ -1,17 +1,55 @@
-# chill-corner
-Web app to set the music and other features to create the perfect atmosphere to study or relax.
+# Chill Corner
 
-As a student, I want to use a productivity/study app that allows me to choose from different themes with different music and background so that I can create a personalized environment that helps me focus on my tasks.
+Deployed by Netlify: https://monumental-gnome-bdb645.netlify.app/
 
-When I open the app, I want to see a list of themes to choose from, each with a different background image and music playlist that fits the theme. For example, there could be a theme for studying in a coffee shop with background chatter and light jazz music, or a theme for studying in a library with the sound of turning pages and classical music.
+This web app is designed to help people create a personalized environment for studying or relaxing by selecting a theme with background music and images. The app also features a timer to help users stay on track and focused.
 
-Once I select a theme, I want to see a countdown timer that I can set to a specific time or use the default timer for a typical study session. I want to be able to pause and resume the timer if I need to take a break or get interrupted.
+## Features
 
-Throughout my study session, I want the app to play the music from the selected theme in the background, creating a calming and productive environment.
+* Select from a list of themes with different background images and music playlists.
 
-At the end of the timer, I want the app to notify me with a sound or message so that I can wrap up my work or take a break before starting another session.
+* Countdown timer that can be set to a specific time.
 
-Overall, I want this app to help me stay on track with my studies and increase my productivity by providing a personalized and calming environment for me to work in.
+* Pause and resume timer if needed.
+
+* Background music from the selected theme plays throughout the study session.
+
+* Confetti at the end of the timer to celebrate your productivity!
+
+![ezgif-3-2c348f0f29](https://user-images.githubusercontent.com/118415313/228925350-63e7aa8f-bc51-4e8f-835f-b3066700347b.gif)
 
 
+## Technologies Used
+
+* React
+* Node.js
+* HTML
+* CSS
+* JavaScript
+* Vite
+* React Icons
+* Tailwind
+* Axios
+
+## Getting Started
+
+* To get started with the app, simply open the app in your web browser.
+
+* Spotify account Premium for our project, login using this to test the app:
+
+Username: chill.corner.web@gmail.com
+
+Password: Bootcamp2023
+
+* You will see a list of themes to choose from. Select a theme that fits your preference, and the background image and music playlist will be displayed.
+
+* Next, set the timer for your study session by selecting the countdown time. You can also pause and resume the timer if needed.
+
+* As you work, the background music from the selected theme will play, creating a calming and productive environment.
+
+* When the timer ends, you will be notified with confetti, and you can wrap up your work or take a break before starting another session.
+
+## License
+
+This project is licensed under the MIT license. See the LICENSE file for details.
 

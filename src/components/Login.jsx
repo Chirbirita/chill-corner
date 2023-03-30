@@ -6,9 +6,8 @@ import logo from '../assets/images/logo.jpg'
 export default function Login() {
   
   const handleClick = async () => {
-    //console.log(import.meta.env.VITE_NEXT_PUBLIC_CLIENT_ID)
-    const client_id = '4f2906a5d36046439e8ae23a23f6acc9';
-    const redirect_uri = "http://localhost:5173/";
+    const client_id = 'eb3a6109471f4ea799215a3e0a7e7a59';
+    const redirect_uri = "http://localhost:5173";
     const api_uri = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-private",
@@ -18,6 +17,9 @@ export default function Login() {
       "user-read-currently-playing",
       "user-read-recently-played",
       "user-top-read",
+      "streaming",
+      'user-library-read',
+      'user-library-modify'
     ];
     // window.location.href = `${api_uri}?client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${scope.join(
     //   " "

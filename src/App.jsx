@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Signin from './components/Signin';
 
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -16,7 +17,7 @@ export default function App() {
   const seconds = useState()
   return (
     <QueryClientProvider client={queryClient}>
-      <div className='w-full'>
+      <div className='w-full mx-auto overflow-scroll border border-3 flex items-center justify-center h-screen py-3'>
         <Signin />
       </div>
     </QueryClientProvider>

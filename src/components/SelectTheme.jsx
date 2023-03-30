@@ -51,7 +51,7 @@ const SelectTheme = () => {
 
 
     return (
-        <div className='bg-[#ffffff59] w-full p-1 rounded-lg h-40 ' >
+        <div className='bg-[#ffffff59] w-full p-2 rounded-lg md:h-30 ' >
             <h1 className="text-center text-sm" >
                 What is your mood today ?
             </h1>

@@ -14,11 +14,18 @@
     "@tanstack/react-query": "^4.28.0",
     "axios": "^1.3.4",
     "react": ">=16.8.0",
+<<<<<<< HEAD
     "react-bootstrap": "^2.7.2",
     "react-dom": ">=16.8.0",
     "react-icons": "^4.8.0",
     "react-spotify-web-playback": "^0.13.4",
     "spotify-web-api-node": "^5.0.2",
+=======
+    "react-confetti": "^6.1.0",
+    "react-dom": ">=16.8.0",
+    "react-icons": "^4.8.0",
+    "react-spotify-web-playback": "^0.13.4",
+>>>>>>> 49cc529b300d4c5c374d4419206971ba7eafc1dd
     "styled-components": "^5.3.9"
   },
   "devDependencies": {

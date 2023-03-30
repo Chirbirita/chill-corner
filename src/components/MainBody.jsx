@@ -56,10 +56,10 @@ const MainBody = () => {
 
     <div
       style={{ backgroundImage: `url(${themeBackground})` }}
-      className="glass my-auto h-5/6 w-full rounded-lg bg-center bg-cover flex flex-col items-center justify-center"
+      className="relative flex flex-col w-[90%] max-w-[300px] md:w-[75%] md:max-w-[1200px] md:h-5/6 mx-auto gap-3 glass rounded-lg bg-center bg-cover py-5"
     >
 
-      <div className="chill__footer flex justify-center h-40 w-full">
+      <div className="relative chill__footer flex mx-auto justify-center h-40 w-[100%]">
         <Footer />
       </div>
       <div>
@@ -67,7 +67,7 @@ const MainBody = () => {
         {/* <Testapi code={code} /> */}
       </div>
 
-      <div className="body__contents flex justify-center h-80 w-full">
+      <div className="relative body__contents flex mx-auto justify-center h-50 w-[100%]">
         <Body headerBackground={headerBackground} />
       </div>
 
@@ -78,24 +78,3 @@ const MainBody = () => {
   );
 };
 export default MainBody;
-
-const Container = styled.div`
-  max-width: 100vw;
-  max-height: 100vh;
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: 85vh 15vh;
-    .body {
-      height: 100%;
-      width: 50%;
-      overflow: auto;
-      &::-webkit-scrollbar {
-        width: 0.7rem;
-        max-height: 2rem;
-        &-thumb {
-          background-color: rgba(255, 255, 255, 0.6);
-        }
-      }
-    }
-  }
-`;

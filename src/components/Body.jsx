@@ -205,21 +205,11 @@ export default function Body({ headerBackground }) {
   // );
 
   return (
-    <Container className="w-[60%] bg-[#ffffff59] mt-16 rounded-lg overflow-scroll">
+    <Container className="relative w-[90%] h-[330px] md:h-[380px] bg-[#ffffff59] rounded-lg overflow-scroll">
       {selectedPlaylist && (
         <>
-          {/* <div className="playlist">
-            <div className="image">
-              <img src={selectedPlaylist.image} alt="selected playlist" />
-            </div>
-            <div className="details">
-              <span className="type">PLAYLIST</span>
-              <h1 className="title">{selectedPlaylist.name}</h1>
-              <p className="description">{selectedPlaylist.description}</p>
-            </div>
-          </div> */}
-          <div className="list">
-            <div className="header-row">
+          <div className="relative list w-[100%] overflow-scroll p-3">
+            <div className="header-row w-[100%]">
               <div className="col">
                 <span>#</span>
               </div>
@@ -252,7 +242,7 @@ export default function Body({ headerBackground }) {
                 ) => {
                   return (
                     <div
-                      className="row"
+                      className="row text-sm"
                       key={index}
                       onClick={() =>
                         playTrack(
@@ -296,49 +286,28 @@ export default function Body({ headerBackground }) {
 }
 
 const Container = styled.div`
-  .playlist {
-    margin: 0 2rem;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    .image {
-      img {
-        height: 1rem;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-      }
-    }
-    .details {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      color: #e0dede;
-      .title {
-        color: white;
-        font-size: 4rem;
-      }
-    }
-  }
   .list {
+    overflow: scroll;
     .header-row {
       display: grid;
-      grid-template-columns: 0.3fr 3fr 2fr 0.1fr;
+      grid-template-columns: 0.8fr 3fr 2fr 0.1fr;
       margin: 10px 0 0 0;
       color: #000000;
       position: sticky;
-      padding: 1rem 3rem;
+      padding: 1rem;
       transition: 0.3s ease-in-out;
       background-color: ${({ headerBackground }) =>
     headerBackground ? "#000000" : "none"};
     }
     .tracks {
-      margin: 0 2rem;
+
       display: flex;
       flex-direction: column;
       margin-bottom: 5rem;
       .row {
         padding: 0.5rem 1rem;
         display: grid;
-        grid-template-columns: 0.3fr 3.1fr 2fr 0.1fr;
+        grid-template-columns: 0.4fr 3fr 2fr 0.1fr;
         &:hover {
           background-color: rgba( 255, 255, 255, 0.75 );
           border-radius: 10px;
