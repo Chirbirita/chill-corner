@@ -14,6 +14,9 @@ This web app is designed to help people create a personalized environment for st
 
 * Confetti at the end of the timer to celebrate your productivity!
 
+![ezgif-3-2c348f0f29](https://user-images.githubusercontent.com/118415313/228925350-63e7aa8f-bc51-4e8f-835f-b3066700347b.gif)
+
+
 ## Technologies Used
 
 * HTML
@@ -21,6 +24,8 @@ This web app is designed to help people create a personalized environment for st
 * JavaScript
 * Vite
 * React Icons
+* Tailwind
+* Axios
 
 ## Getting Started
 
