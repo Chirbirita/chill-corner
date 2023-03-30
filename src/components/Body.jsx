@@ -92,7 +92,7 @@ export default function Body({ headerBackground }) {
   };
 
   return (
-    <Container className="relative w-[90%] h-[330px] md:h-[540px] bg-[#ffffff59] rounded-lg overflow-scroll">
+    <Container className="relative w-[90%] h-[330px] md:h-[380px] bg-[#ffffff59] rounded-lg overflow-scroll">
       {selectedPlaylist && (
         <>
           <div className="relative list w-[100%] overflow-scroll p-3">

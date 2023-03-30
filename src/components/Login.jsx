@@ -4,9 +4,8 @@ import logo from '../assets/images/logo.jpg'
 
 export default function Login() {
   const handleClick = async () => {
-    console.log(import.meta.env.VITE_NEXT_PUBLIC_CLIENT_ID)
-    const client_id = import.meta.env.VITE_NEXT_PUBLIC_CLIENT_ID;
-    const redirect_uri = "https://monumental-gnome-bdb645.netlify.app/";
+    const client_id = 'eb3a6109471f4ea799215a3e0a7e7a59';
+    const redirect_uri = "http://localhost:5173";
     const api_uri = "https://accounts.spotify.com/authorize";
     const scope = [
       "user-read-private",
