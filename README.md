@@ -40,3 +40,7 @@ Password: Bootcamp2023
 
 * When the timer ends, you will be notified with a sound or message, and you can wrap up your work or take a break before starting another session.
 
+## License
+
+This project is licensed under the MIT license. See the LICENSE file for details.
+
