@@ -47,7 +47,7 @@ Password: Bootcamp2023
 
 * As you work, the background music from the selected theme will play, creating a calming and productive environment.
 
-* When the timer ends, you will be notified with a sound or message, and you can wrap up your work or take a break before starting another session.
+* When the timer ends, you will be notified with confetti, and you can wrap up your work or take a break before starting another session.
 
 ## License
 
