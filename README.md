@@ -6,7 +6,7 @@ This web app is designed to help people create a personalized environment for st
 
 * Select from a list of themes with different background images and music playlists.
 
-* Countdown timer that can be set to a specific time or use the default timer for a typical study session.
+* Countdown timer that can be set to a specific time.
 
 * Pause and resume timer if needed.
 
