@@ -21,6 +21,8 @@ This web app is designed to help people create a personalized environment for st
 
 ## Technologies Used
 
+* React
+* Node.js
 * HTML
 * CSS
 * JavaScript
