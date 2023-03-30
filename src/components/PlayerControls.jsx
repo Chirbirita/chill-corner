@@ -11,7 +11,6 @@ import { useStateProvider } from "../utils/StateProvider";
 import SpotifyPlayer from 'react-spotify-web-playback';
 
 
-import axios from "axios";
 import { reducerCases } from "../utils/Constants";
 export default function PlayerControls() {
   const [{ token, selectedPlaylistId }, dispatch] = useStateProvider();
