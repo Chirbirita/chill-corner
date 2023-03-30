@@ -17,7 +17,7 @@ export default function PlayerControls() {
   const [{ token, selectedPlaylistId }, dispatch] = useStateProvider();
 
   return (
-    <Container>
+    <div className="relative p-3">
       <SpotifyPlayer
         styles={{
           activeColor: '#fff',
@@ -28,38 +28,14 @@ export default function PlayerControls() {
           trackArtistColor: '#000',
           trackNameColor: '#000',
           height: 100,
-          loaderSize: '100'
         }}
         token={token}
         uris={[`spotify:playlist:${selectedPlaylistId}`]}
         hideAttribution='true'
         layout="responsive"
       />
-    </Container>
+    </div>
   );
 }
 
-const Container = styled.div`
-margin-top: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  svg {
-    color: #000000;
-    transition: 0.2s ease-in-out;
-    &:hover {
-      color: white;
-    }
-  }
-  .state {
-    svg {
-      color: white;
-    }
-  }
-  .previous,
-  .next,
-  .state {
-    font-size: 2rem;
-  }
-`;
+

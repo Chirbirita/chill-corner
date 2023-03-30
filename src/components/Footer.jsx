@@ -8,22 +8,9 @@ import PlayerControls from "./PlayerControls";
 
 export default function Footer() {
   return (
-    <Container>
+    <div className="h-full w-[95%] relative items-center justify-center rounded-lg ">
       {/* <CurrentTrack /> */}
       <PlayerControls />
-    </Container>
+    </div>
   );
 }
-
-const Container = styled.div`
-  height: 100%;
-  width: 70%;
-  background-color: #ffffff59;
-  border-top: 1px solid #ffffff59;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  padding: 0 1rem;
-`;

@@ -59,8 +59,8 @@ export const TimerSection = () => {
     const targetTime = remainingTimeRef.current
       ? new Date(now.getTime() + remainingTimeRef.current)
       : new Date(
-          now.getTime() + time.hour * 60 * 60 * 1000 + time.minutes * 60 * 1000
-        );
+        now.getTime() + time.hour * 60 * 60 * 1000 + time.minutes * 60 * 1000
+      );
 
     targetTimeRef.current = targetTime;
     remainingTimeRef.current = null;
@@ -124,12 +124,13 @@ export const TimerSection = () => {
         onSubmit={handleSubmit}
         className="relative flex w-full flex-col items-center rounded-md bg-[#ffffff59] p-4"
       >
-        <p className="text-m rounded-md bg-[#ffffff59] bg-opacity-95 p-2 font-bold">
+
+        <p className="text-m mb-2 rounded-md bg-[#ffffff59] bg-opacity-95 p-2 font-bold opacity-75">
           Countdown timer
         </p>
         <div className="flex w-full flex-row items-center">
-          <label htmlFor="hour" className="relative w-1/2">
-            Hours
+          <label htmlFor="hour" className="relative w-1/2 px-2">
+            Hours:
             <input
               type="number"
               name="hour"
@@ -148,11 +149,13 @@ export const TimerSection = () => {
               }}
               disabled={active}
               ref={hourRef}
-              className="w-[90%] rounded-md py-1"
+
+              className="ml-3 w-1/3 rounded-md py-1"
             />
           </label>
-          <label htmlFor="minute" className="relative w-1/2">
-            Minutes
+          <label htmlFor="minute" className="relative w-1/2 p-1">
+            Minutes:
+
             <input
               type="number"
               name="minutes"
@@ -173,13 +176,17 @@ export const TimerSection = () => {
               ref={minsRef}
               max="59"
               min="0"
-              className="w-[90%] rounded-md py-1"
+
+              className="ml-3 w-1/3 rounded-md py-1"
+
             />
           </label>
         </div>
         <div className="container relative flex justify-center space-x-4">
           <button
-            className="rounded bg-white px-4 text-black"
+
+            className="rounded bg-white px-4 text-black hover:bg-slate-50 focus:bg-slate-500"
+
             style={{ marginTop: '10px' }}
             disabled={active}
           >
@@ -187,7 +194,9 @@ export const TimerSection = () => {
           </button>
           {active ? (
             <button
-              className="rounded bg-white px-4 text-black"
+
+              className="rounded bg-white px-4 text-black hover:bg-slate-50 focus:bg-slate-500"
+
               style={{ marginTop: '10px' }}
               onClick={pauseTimer}
             >
@@ -195,7 +204,9 @@ export const TimerSection = () => {
             </button>
           ) : null}
           <button
-            className="rounded bg-white py-2 px-4 text-black"
+
+            className="rounded bg-white py-2 px-4 text-black hover:bg-slate-50 focus:bg-slate-500"
+
             style={{ marginTop: '10px' }}
             onClick={resetTimer}
             disabled={!active}
@@ -204,17 +215,19 @@ export const TimerSection = () => {
           </button>
         </div>
       </form>
-      <div className="mt-1 flex w-full justify-center">
-        {active && (
-          <p>{`${displayTime.displayHour
-            .toString()
-            .padStart(2, '0')} : ${displayTime.displayMinutes
+      <div className="text-m mt-1 flex w-full justify-center rounded-md bg-[#ffffff59] bg-opacity-95 p-2 font-bold">
+        <p>{`${displayTime.displayHour
+          .toString()
+          .padStart(2, '0')} : ${displayTime.displayMinutes
             .toString()
             .padStart(2, '0')} : ${displayTime.displaySeconds
-            .toString()
-            .padStart(2, '0')}`}</p>
-        )}
+              .toString()
+              .padStart(2, '0')}`}</p>
       </div>
     </div>
   );
 };
+
+//<div>{active && (
+
+//)}</div>
