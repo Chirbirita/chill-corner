@@ -1,5 +1,7 @@
 # Chill Corner
 
+Deployed by Netlify: https://monumental-gnome-bdb645.netlify.app/
+
 This web app is designed to help people create a personalized environment for studying or relaxing by selecting a theme with background music and images. The app also features a timer to help users stay on track and focused.
 
 ## Features
