@@ -1,6 +1,6 @@
 # Chill Corner
 
-This web app is designed to help students create a personalized environment for studying or relaxing by selecting a theme with background music and images. The app also features a timer to help users stay on track and focused.
+This web app is designed to help people create a personalized environment for studying or relaxing by selecting a theme with background music and images. The app also features a timer to help users stay on track and focused.
 
 ## Features
 
@@ -12,7 +12,7 @@ This web app is designed to help students create a personalized environment for 
 
 * Background music from the selected theme plays throughout the study session.
 
-* Notification at the end of the timer with a sound or message.
+* Confetti at the end of the timer to celebrate your productivity!
 
 ## Technologies Used
 
