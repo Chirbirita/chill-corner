@@ -1,5 +1,5 @@
 import { reducerCases } from "./Constants";
-import random from "src/assets/images/random.jpg"
+import random from "/src/assets/images/random.jpg"
 
 
 export const initialState = {

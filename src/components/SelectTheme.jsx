@@ -2,11 +2,11 @@ import { useState, useContext } from "react"
 import axios from "axios";
 import { useStateProvider } from "../utils/StateProvider";
 import { reducerCases } from "../utils/Constants";
-import chill from "src/assets/images/chill.jpg"
-import happy from "src/assets/images/happy.jpg"
-import sad from "src/assets/images/sad.jpg"
-import relaxed from "src/assets/images/relaxed.jpg"
-import random from "src/assets/images/random.jpg"
+import chill from "/src/assets/images/chill.jpg"
+import happy from "/src/assets/images/happy.jpg"
+import sad from "/src/assets/images/sad.jpg"
+import relaxed from "/src/assets/images/relaxed.jpg"
+import random from "/src/assets/images/random.jpg"
 
 const moodOptions = [{ mood: 'chill', bg_href: chill, id: '3WLDIcG4Cx2UOPy0rbFhQn' }, { mood: 'happy', bg_href: happy, id: "37i9dQZF1EQqFPe2ux3rbj" }, { mood: 'sad', bg_href: sad, id: '37i9dQZF1DWVV27DiNWxkR' }, { mood: 'relaxed', bg_href: relaxed, id: '37i9dQZF1DX2vYju3i0lNX' }, { mood: 'random', bg_href: random, id: "1ak02xRxcy5UjN0TqoaaWw" }]
 
