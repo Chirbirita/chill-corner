@@ -54,20 +54,23 @@ function SideBar() {
   return (
     <div
       style={{ backgroundImage: `url(${themeBackground})` }}
-      className="flex flex-col w-[90%] mx-auto max-w-[300px] lg:max-w-[350px] md:h-5/6 gap-5 relative glass my-auto rounded-lg py-5 justify-center bg-cover px-3"
-    >
-      
-      <div className='flex flex-col gap-4 md:justify-between lg:h-[450px]'>
+      className="flex flex-col w-[90%] mx-auto max-w-[300px] lg:max-w-[350px] md:h-5/6 gap-5 relative glass my-auto rounded-lg py-5 justify-center bg-cover px-3"    >
+
+      <div className='little-glass rounded-lg w-full flex justify-center py-3 md:absolute md:top-3 md:left-0 md:right-0 md:w-[90%] mx-auto'>
         {/* <Search/> */}
         <img
           src={chillCorner}
           alt='ChillCorner'
-          className='h-15'
+          className='h-20 w-40'
         />
+      </div>
+      <div className='flex flex-col gap-4 md:justify-between lg:h-[450px]'>
+        {/* <Search/> */}
         <SelectTheme />
         <TimerSection />
       </div>
     </div>
+
   );
 }
 
