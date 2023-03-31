@@ -1,4 +1,5 @@
 import { reducerCases } from "./Constants";
+import random from "src/assets/images/random.jpg"
 
 
 export const initialState = {
@@ -9,7 +10,7 @@ export const initialState = {
   playerState: false,
   selectedPlaylist: null,
   selectedPlaylistId: "37i9dQZF1DX8Uebhn9wzrS",
-  themeBackground: 'src/assets/images/random.jpg'
+  themeBackground: random
 };
 
 const reducer = (state, action) => {
