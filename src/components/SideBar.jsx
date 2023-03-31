@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SelectTheme from './SelectTheme';
 import { useStateProvider } from '../utils/StateProvider';
 import { TimerSection } from './TimerSection';
-import chillCorner from '../assets/images/chill-corner.png'
+import chillCorner from '/src/assets/images/chill-corner.png'
 
 
 function SideBar() {
