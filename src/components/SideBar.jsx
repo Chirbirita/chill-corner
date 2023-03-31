@@ -54,7 +54,7 @@ function SideBar() {
   return (
     <div
       style={{ backgroundImage: `url(${themeBackground})` }}
-      className=" flex flex-col w-[90%] mx-auto max-w-[300px] lg:max-w-[350px] md:h-5/6 md:min-h-5/6 gap-5 relative glass my-auto rounded-lg py-5 md:pt-10 justify-center bg-cover px-3 overflow-scroll"    >
+      className=" flex flex-col w-[90%] mx-auto max-w-[300px] lg:max-w-[350px] md:h-5/6 md:min-h-5/6 lg:min-h-[700px] gap-5 relative glass my-auto rounded-lg py-5 md:pt-10 justify-center bg-cover px-3 overflow-scroll"    >
 
       <div className='relative little-glass rounded-lg w-full flex justify-center py-3 md:absolute md:top-3 md:left-0 md:right-0 md:w-[90%] mx-auto'>
         {/* <Search/> */}
