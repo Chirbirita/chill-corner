@@ -61,7 +61,7 @@ const MainBody = () => {
         <Footer />
       </div>
 
-      <div className="relative body__contents flex mx-auto justify-center h-50 w-[100%]">
+      <div className="relative body__contents flex mx-auto justify-center h-80 w-[100%]">
         <Body headerBackground={headerBackground} />
       </div>
 
