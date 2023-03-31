@@ -54,7 +54,7 @@ const MainBody = () => {
 
     <div
       style={{ backgroundImage: `url(${themeBackground})` }}
-      className="relative flex flex-col w-[90%] max-w-[300px] md:w-[75%] md:max-w-[1200px] md:h-5/6 md:min-h-5/6 mx-auto gap-3 glass rounded-lg bg-center bg-cover py-5 overflow-scroll"
+      className="relative flex flex-col w-[90%] max-w-[300px] md:w-[75%] md:max-w-[1200px] md:h-5/6 md:min-h-5/6 mx-auto gap-3 glass rounded-lg bg-center bg-cover py-5 overflow-scroll pb-3"
     >
 
       <div className="relative chill__footer flex mx-auto justify-center h-40 w-[100%]">

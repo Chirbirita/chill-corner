@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import logo from '/src/assets/images/logo.jpg'
+import logo from 'src/assets/images/logo.jpg'
 
 export default function Login() {
   const handleClick = async () => {
